@@ -12,6 +12,8 @@ on:
 env:
   DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
   DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
+  DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+  DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
 
 jobs:
   cicd:
