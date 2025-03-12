@@ -38,10 +38,9 @@ jobs:
         
       - name: Debug
         run: |
-          echo "DATABRICKS_HOST: ${{ env.DATABRICKS_HOST }}"
-          echo "DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}"
-          echo "DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}"
-          echo "DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}"
+            echo "DATABRICKS_TOKEN length: ${#DATABRICKS_TOKEN}"
+            echo "CLIENT_ID length: ${#DATABRICKS_CLIENT_ID}"
+            echo "CLIENT_SECRET length: ${#DATABRICKS_CLIENT_SECRET}"
           
       - name: Unzip Bundle and Append Parameters to Input JSON
         id: unzip
