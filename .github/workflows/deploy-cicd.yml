@@ -11,7 +11,7 @@ on:
 
 env:
   DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
-  DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
+  DATABRICKS_TOKEN: dapi16e5d6833d10d6ce10bb902d775b16e8
 
 
 jobs:
