@@ -11,17 +11,12 @@ on:
 
 env:
   DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
-  DATABRICKS_TOKEN: dapi16e5d6833d10d6ce10bb902d775b16e8
+  DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
 
 
 jobs:
   cicd:
     runs-on: ubuntu-latest
-    env:
-      DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
-      DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
-      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
-      DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
     steps:
       - name: Get current timestamp
         id: timestamp
