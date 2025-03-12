@@ -12,12 +12,16 @@ on:
 env:
   DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
   DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
-  DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
-  DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+
 
 jobs:
   cicd:
     runs-on: ubuntu-latest
+    env:
+      DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
+      DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
+      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+      DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
     steps:
       - name: Get current timestamp
         id: timestamp
@@ -50,9 +54,6 @@ jobs:
         id: update
         run: |
           echo -e "  staging:\n    variables:\n      catalog_name: hml_c\n    workspace:\n      host: https://dbc-6ebed6cf-b45e.cloud.databricks.com\n\n  prod:\n    variables:\n      catalog_name: prd_c\n    workspace:\n      host: https://dbc-530312ad-73ca.cloud.databricks.com\n\n  test:\n    variables:\n      catalog_name: hml_c\n    workspace:\n      host: https://dbc-6ebed6cf-b45e.cloud.databricks.com" >> "$(PROJECT_NAME_ALPHA)\databricks.yml"
-      - name: Verify Databricks CLI Authentication
-        run: |
-          databricks clusters list
       - name: Initialize Bundle
         id: initialize
         run: |
