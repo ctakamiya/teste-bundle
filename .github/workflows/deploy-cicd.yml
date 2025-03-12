@@ -52,7 +52,7 @@ jobs:
           echo -e "  staging:\n    variables:\n      catalog_name: hml_c\n    workspace:\n      host: https://dbc-6ebed6cf-b45e.cloud.databricks.com\n\n  prod:\n    variables:\n      catalog_name: prd_c\n    workspace:\n      host: https://dbc-530312ad-73ca.cloud.databricks.com\n\n  test:\n    variables:\n      catalog_name: hml_c\n    workspace:\n      host: https://dbc-6ebed6cf-b45e.cloud.databricks.com" >> "$(PROJECT_NAME_ALPHA)\databricks.yml"
       - name: Verify Databricks CLI Authentication
         run: |
-          databricks workspace list-repos
+          databricks clusters list
       - name: Initialize Bundle
         id: initialize
         run: |
