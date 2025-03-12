@@ -38,6 +38,7 @@ jobs:
         
       - name: Debug
         run: |
+            echo "DATABRICKS_TOKEN length: ${#DATABRICKS_HOST}"
             echo "DATABRICKS_TOKEN length: ${#DATABRICKS_TOKEN}"
             echo "CLIENT_ID length: ${#DATABRICKS_CLIENT_ID}"
             echo "CLIENT_SECRET length: ${#DATABRICKS_CLIENT_SECRET}"
