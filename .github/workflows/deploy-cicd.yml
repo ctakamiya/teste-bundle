@@ -12,6 +12,8 @@ on:
 env:
   DATABRICKS_HOST: https://dbc-6ebed6cf-b45e.cloud.databricks.com
   DATABRICKS_TOKEN: ${{ secrets.STAGING_WORKSPACE_TOKEN }}
+  DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+  DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
 
 
 jobs:
@@ -33,6 +35,15 @@ jobs:
           echo "PROJECT_NAME_ALPHA=$PROJECT_NAME_ALPHA" >> "$GITHUB_ENV"
       - name: Install jq
         run: sudo apt-get install jq
+        
+      - name: Install Databricks CLI
+        run: pip install databricks-cli
+
+      - name: Verify Databricks Authentication
+        run: |
+          echo "Testing Databricks authentication..."
+          databricks workspace list || (echo "Authentication failed. Check your credentials." && exit 1)
+          
       - name: Unzip Bundle and Append Parameters to Input JSON
         id: unzip
         run: |
